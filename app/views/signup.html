@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="center-form panel">
+      <div class="panel-body">
+        <h2 class="text-center">Registro</h2>
+        <form method="post" ng-submit="signup()" name="signupForm">
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.username.$invalid && signupForm.username.$dirty }">
+            <input class="form-control input-lg" type="text" name="username" ng-model="user.username" placeholder="Nombre de usuario" required autofocus>
+            <span class="ion-person form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="signupForm.username.$dirty" ng-messages="signupForm.username.$error">
+              <div ng-message="required">Debes ingresar tu nombre.</div>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
+            <input class="form-control input-lg" type="email" id="email" name="email" ng-model="user.email" placeholder="Email" required>
+            <span class="ion-at form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="signupForm.email.$dirty" ng-messages="signupForm.email.$error">
+              <div ng-message="required">Se requiere tu dirección de correo electrónico.</div>
+              <div ng-message="pattern">Tu dirección de correo electrónico no es válida.</div>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }">
+            <input password-strength class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Contraseña" required>
+            <span class="ion-key form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="signupForm.password.$dirty" ng-messages="signupForm.password.$error">
+              <div ng-message="required">Contraseña requerida.</div>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }">
+            <input password-match="user.password" class="form-control input-lg" type="password" name="confirmPassword" ng-model="confirmPassword" placeholder="Confirmar Contraseña">
+            <span class="ion-key form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="signupForm.confirmPassword.$dirty" ng-messages="signupForm.confirmPassword.$error">
+              <div ng-message="compareTo">Contraseñas deben coincidir .</div>
+            </div>
+          </div>
+          <div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.usertype.$invalid && signupForm.usertype.$dirty }">
+            <select class="form-control input-lg" name="usertype" ng-model="user.usertype">
+              <option value=''>Tipo de usuario</option>                       
+              <option value='Particular'>Particular</option>
+              <option value='Agente Inmobiliario'>Agente Inmobiliario</option>
+              <option value='Empresa'>Empresa</option>
+            </select>
+            <span class="ion-compose form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="signupForm.usertype.$dirty" ng-messages="signupForm.usertype.$error">
+             <!-- <div ng-message="compareTo">Contraseñas deben coincidir .</div>-->
+            </div>
+          </div>
+          <p class="text-center text-muted"><small>Al hacer clic en Registrarse, aceptas los <a href="#">Termos y condiciones</a> y la <a href="#">Política de Privacidad</a></small></p>
+          <button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-lg btn-block btn-primary">Registrarse</button>
+          <br/>
+          <p class="text-center text-muted">Ya tienes una cuenta? <a href="/#/login">Acceder ahora</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
